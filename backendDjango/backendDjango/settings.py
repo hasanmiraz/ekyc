@@ -30,7 +30,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 # Application definition
 
@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
     "rest_framework",
     "user",
-    "student"
+    "student",
+    "course"
 ]
 
 MIDDLEWARE = [

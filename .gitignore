@@ -1,3 +1,5 @@
 /ekycenv
 .env
 __pycache__
+migrations
+backendtest
