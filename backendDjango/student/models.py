@@ -17,6 +17,7 @@ class FamilyInformation(models.Model):
     siblings = models.IntegerField()
 
 class EducationInformation(models.Model):
-    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE, unique=True)
     status = models.CharField(max_length=50)
+    
     
