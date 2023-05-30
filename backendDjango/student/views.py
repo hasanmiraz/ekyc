@@ -6,14 +6,6 @@ from .models import Student
 from .serializers import StudentSerializer
 
 # Create your views here.
-
-@api_view(["GET"])
-def testview(request):
-    if request.method == "GET":
-        data = {
-            'test':'test'
-        }
-        return Response(data)
     
 @api_view(["GET","POST"])
 def StudentView(request):
