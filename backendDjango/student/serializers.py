@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Student, PersonalInformation, FamilyInformation, EducationInformation
 from course.serializers import CourseSerializer
+from course.models import Course
 
 class PersonalInformationSerializer(serializers.ModelSerializer):
     student_id = serializers.PrimaryKeyRelatedField(read_only=True)
@@ -18,11 +19,19 @@ class FamilyInformationSerializer(serializers.ModelSerializer):
 
 class EducationInformationSerializer(serializers.ModelSerializer):
     student_id = serializers.PrimaryKeyRelatedField(read_only=True)
-    course = CourseSerializer(source='course_set', many=True, read_only=True)
+    course = CourseSerializer(many=True, source='course_set',read_only=True)
 
     class Meta:
         model = EducationInformation
-        fields = '__all__'        
+        fields = '__all__'
+
+    def create(self, validated_data):
+        courses_data = validated_data.pop('course')
+        education_information = EducationInformation.objects.create(**validated_data)
+        for course_data in courses_data:
+            Course.objects.create(education_information_id=education_information, **course_data)
+        return education_information
+
 
 class StudentSerializer(serializers.ModelSerializer):
     personal_information = PersonalInformationSerializer()

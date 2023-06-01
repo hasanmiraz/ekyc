@@ -7,8 +7,6 @@ class GradeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CourseSerializer(serializers.ModelSerializer):
-
-    grade = GradeSerializer(source='grade_set', many= True)
     class Meta:
         model = Course
         fields = '__all__'
