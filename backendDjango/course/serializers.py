@@ -7,6 +7,7 @@ class GradeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CourseSerializer(serializers.ModelSerializer):
+    education_information_id = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Course
         fields = '__all__'
