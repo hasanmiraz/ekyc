@@ -19,24 +19,25 @@ class FamilyInformationSerializer(serializers.ModelSerializer):
 
 class EducationInformationSerializer(serializers.ModelSerializer):
     student_id = serializers.PrimaryKeyRelatedField(read_only=True)
-    course = CourseSerializer(many=True, required = False)
+    # courses_f_key = CourseSerializer(many=True)
 
     class Meta:
         model = EducationInformation
         fields = '__all__'
 
-    def create(self, validated_data):
-        courses_data = validated_data.pop('course', [])
-        education_information = EducationInformation.objects.create(**validated_data)
-        for course_data in courses_data:
-            Course.objects.create(education_information_id=education_information, **course_data)
-        return education_information
+    # def create(self, validated_data):
+    #     courses_data = validated_data.pop('courses_f_key', [])
+    #     print(f"course data: {course_data}")
+    #     education_information = EducationInformation.objects.create(**validated_data)
+    #     for course_data in courses_data:
+    #         Course.objects.create(education_information_id=education_information, **course_data)
+    #     return education_information
 
 
 class StudentSerializer(serializers.ModelSerializer):
-    personal_information = PersonalInformationSerializer()
-    family_information = FamilyInformationSerializer()
-    education_information = EducationInformationSerializer()
+    personal_information = PersonalInformationSerializer(required=False)
+    family_information = FamilyInformationSerializer(required=False)
+    education_information = EducationInformationSerializer(required=False)
 
     class Meta:
         model = Student
@@ -44,9 +45,17 @@ class StudentSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         print(f"validated data : {validated_data}")
-        personal_information_data = validated_data.pop('personal_information')
-        family_information_data = validated_data.pop('family_information')
-        education_information_data = validated_data.pop('education_information')
+        
+        personal_information_data = validated_data.get('personal_information')
+        family_information_data = validated_data.get('family_information')
+        education_information_data = validated_data.get('education_information')
+
+        if 'personal_information' in validated_data:
+            validated_data.pop('personal_information')
+        if 'family_information' in validated_data:
+            validated_data.pop('family_information')
+        if 'education_information' in validated_data:
+            validated_data.pop('education_information')
 
         student = Student.objects.create(**validated_data)
         print(f"education data : {education_information_data}")

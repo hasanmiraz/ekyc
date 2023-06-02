@@ -1,0 +1,108 @@
+{
+  "id": 1,
+  "personal_information": {
+    "dob": "1990-05-15",
+    "bloodGroup": "A+"
+  },
+  "family_information": {
+    "father_name": "testf",
+    "mother_name": "testm",
+    "siblings": 2
+  },
+  "education_information": {
+    "course": [
+      {
+        "name": "sgag",
+        "code": 234,
+        "grades": [
+          {
+            "grade": "sgdr",
+            "semester": 348
+          },
+          {
+            "grade": "sgdr",
+            "semester": 348
+          }
+        ]
+      },
+      {
+        "name": "trwetgr",
+        "code": 12433,
+        "grades": [
+          {
+            "grade": "sdfgaf",
+            "semester": 334248
+          }
+        ]
+      },
+      {
+        "name": "trwetgr",
+        "code": 12433
+      }
+    ],
+    "status": "student",
+    "university_name": "testU"
+  },
+  "name": "John Doe"
+}
+
+
+{
+  "id": 38,
+  "personal_information": {
+    "dob": "1990-05-15",
+    "bloodGroup": "A+"
+  },
+  "family_information": {
+    "father_name": "testf",
+    "mother_name": "testm",
+    "siblings": 2
+  },
+  "education_information": {
+    "courses_f_key": [
+      {
+        "name": "sgag",
+        "code": 234
+      }
+    ],
+    "status": "student",
+    "university_name": "testU"
+  },
+  "name": "John Doe"
+}
+
+{
+  "education_information": {
+    "courses_f_key": [
+      {
+        "name": "sgag",
+        "code": 234
+      }
+    ],
+    "status": "student",
+    "university_name": "testU"
+  }
+}
+
+{
+  "id": 38,
+  "name": "John Doe"
+}
+
+{
+  "id": 38,
+  "personal_information": {
+    "dob": "1990-05-15",
+    "bloodGroup": "A+"
+  },
+  "family_information": {
+    "father_name": "testf",
+    "mother_name": "testm",
+    "siblings": 2
+  },
+  "education_information": {
+    "status": "student",
+    "university_name": "testU"
+  },
+  "name": "John Doe"
+}
